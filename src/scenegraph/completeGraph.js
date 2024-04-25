@@ -1,6 +1,7 @@
 // Import the necessary modules from the Three.js library
 import * as THREE from 'three';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { AxisGridHelper } from './axisGridHelper.js';
 
 function main() {
 	// Get the canvas element from the HTML
@@ -76,33 +77,6 @@ function main() {
 	moonMesh.scale.set( .5, .5, .5 );
 	moonOrbit.add( moonMesh );
 	objects.push( moonMesh );
-
-	// Define a helper class to toggle visibility of axes and grid
-	class AxisGridHelper {
-		constructor( node, units = 10 ) {
-			const axes = new THREE.AxesHelper();
-			axes.material.depthTest = false;
-			axes.renderOrder = 2; // after the grid
-			node.add( axes );
-
-			const grid = new THREE.GridHelper( units, units );
-			grid.material.depthTest = false;
-			grid.renderOrder = 1;
-			node.add( grid );
-
-			this.grid = grid;
-			this.axes = axes;
-			this.visible = false;
-		}
-		get visible() {
-			return this._visible;
-		}
-		set visible( v ) {
-			this._visible = v;
-			this.grid.visible = v;
-			this.axes.visible = v;
-		}
-	}
 
 	// Function to create and add axis grid helpers with GUI controls
 	function makeAxisGrid( node, label, units ) {

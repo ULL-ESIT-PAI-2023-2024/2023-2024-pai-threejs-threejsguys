@@ -1,3 +1,6 @@
+import * as THREE from 'three';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+
 // Define a helper class to toggle visibility of axes and grid
 export class AxisGridHelper {
 	constructor( node, units = 10 ) {
