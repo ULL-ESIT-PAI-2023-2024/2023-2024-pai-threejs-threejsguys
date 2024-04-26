@@ -24,11 +24,18 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: "green" });
+  const material = new THREE.MeshPhongMaterial({
+    color: 'red',    // rojo
+    shininess: 150
+  });
   const cube = new THREE.Mesh(geometry, material);
   cube.rotation.set(1,2,3); 
 
   scene.add(cube);
+
+  const pointLight = new THREE.PointLight(0xffffff, 150); 
+  pointLight.position.set(0, 0, 5); 
+  scene.add(pointLight);
 
   function render() {
     requestAnimationFrame(render);
@@ -39,12 +46,3 @@ function init() {
 }
 
 init();
-
-
-
-/** 
- * Forma de compilar: 
- * npx tsc simpleProgram.ts 
- * npx webpack
- */
-
