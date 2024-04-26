@@ -16,13 +16,23 @@ var THREE = require("three");
  */
 function init() {
     var scene = new THREE.Scene();
+    // Crear una luz ambiente
+    var ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // color, intensidad
+    scene.add(ambientLight);
+    // Crear una luz direccional
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // color, intensidad
+    directionalLight.position.set(1, 1, 1); // posición de la luz
+    scene.add(directionalLight);
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
     var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({ color: "green" });
+    var material = new THREE.MeshPhongMaterial({
+        color: 0xFF0000,
+        flatShading: true
+    });
     var cube = new THREE.Mesh(geometry, material);
     cube.rotation.set(1, 2, 3);
     scene.add(cube);
@@ -35,6 +45,6 @@ function init() {
 init();
 /**
  * Forma de compilar:
- * npx tsc simpleProgram.ts
+ * npx tsc materials.ts
  * npx webpack
  */
