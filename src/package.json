@@ -20,6 +20,7 @@
     "@exercism/babel-preset-typescript": "^0.1.0",
     "@exercism/eslint-config-typescript": "^0.4.1",
     "@types/dat.gui": "^0.7.13",
+    "@types/three": "^0.164.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "babel-jest": "^27.5.1",
     "core-js": "^3.21.0",

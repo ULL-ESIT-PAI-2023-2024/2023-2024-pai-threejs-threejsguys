@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './simpleProgram.ts', 
+  entry: './simpleProgram.js', 
   output: {
     path: path.resolve(__dirname, './compiled'),
     filename: 'simpleProgram.js', 

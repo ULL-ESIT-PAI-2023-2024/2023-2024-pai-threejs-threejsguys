@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h2, h3 {
+  text-align: center; /* Asegúrate de separar los selectores con una coma */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 50px auto;
+  width: 80%;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #007bff;
+}

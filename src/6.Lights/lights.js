@@ -9,51 +9,69 @@
  * @since March 29 2022
  * @desc funcionamiento con la clase main
 */
-exports.__esModule = true;
-var THREE = require("three");
+
+import * as THREE from 'three';
+
 /**
  * Función principal que inicializa la aplicación.
  */
 function init() {
-    var scene = new THREE.Scene();
-    var fov = 45;
-    var aspect = window.innerWidth / window.innerHeight;
-    var near = 0.1;
-    var far = 100;
-    var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 10, 20);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-    var cubeSize = 4;
-    var cubeGeo = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-    var cubeMat = new THREE.MeshPhongMaterial({ color: 'blue' });
-    var cubeMesh = new THREE.Mesh(cubeGeo, cubeMat);
-    cubeMesh.position.set(cubeSize + 1, cubeSize / 2, 0);
-    scene.add(cubeMesh);
-    var sphereRadius = 3;
-    var sphereWidthDivisions = 32;
-    var sphereHeightDivisions = 16;
-    var sphereGeo = new THREE.SphereGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
-    var sphereMat = new THREE.MeshPhongMaterial({ color: 'red' });
-    var sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
-    sphereMesh.position.set(-sphereRadius - 1, sphereRadius + 2, 0);
-    scene.add(sphereMesh);
-    var color = 0xFFFFFF;
-    var intensity = 1;
-    var light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(3, 8, 0);
-    scene.add(light);
-    scene.add(light.target);
-    function render() {
-        requestAnimationFrame(render);
-        renderer.render(scene, camera);
-    }
-    render();
+  const scene = new THREE.Scene();
+
+  const fov = 45;
+  const aspect = window.innerWidth / window.innerHeight;
+  const near = 0.1;
+  const far = 100;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.set(0, 5, 20);
+
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  const cubeSize = 4;
+  const cubeGeo = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+  const cubeMat = new THREE.MeshPhongMaterial({ color: 'blue' });
+  const cubeMesh = new THREE.Mesh(cubeGeo, cubeMat);
+  cubeMesh.position.set(5, 2, 0);
+  scene.add(cubeMesh);
+
+  const sphereRadius = 3;
+  const sphereWidthDivisions = 32;
+  const sphereHeightDivisions = 16;
+  const sphereGeo = new THREE.SphereGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
+  const sphereMat = new THREE.MeshPhongMaterial({ color: 'red' });
+  const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
+  sphereMesh.position.set(-2, 5, 0);
+  scene.add(sphereMesh);
+
+  const color = 'white';
+  const intensityDirectLight = 150;
+  const lightDirect = new THREE.PointLight(color, intensityDirectLight);
+  lightDirect.position.set(6, 8, 5);
+  scene.add(lightDirect);
+  const helper1 = new THREE.PointLightHelper(lightDirect);
+  scene.add(helper1);
+
+
+  const lightDirect2 = new THREE.PointLight(color, intensityDirectLight);
+  lightDirect2.position.set(0, 0, 0);
+  scene.add(lightDirect2);
+  const helper2 = new THREE.PointLightHelper(lightDirect2);
+  scene.add(helper2);
+
+  function render() {
+    requestAnimationFrame(render);
+    renderer.render(scene, camera);
+  }
+
+  render();
 }
+
 init();
-/**
- * Forma de compilar:
- * npx tsc materials.ts
+
+/** 
+ * Forma de compilar: 
+ * npx tsc materials.ts 
  * npx webpack
- */ 
+ */
