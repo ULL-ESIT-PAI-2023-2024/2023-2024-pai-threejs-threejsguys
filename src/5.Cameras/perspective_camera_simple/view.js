@@ -5,7 +5,7 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
 function main() {
   // Get the canvas element
-  const canvas = document.querySelector('#c');
+  const canvas = document.querySelector('#canvas');
 
   // Create a WebGL renderer with antialiasing
   const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });

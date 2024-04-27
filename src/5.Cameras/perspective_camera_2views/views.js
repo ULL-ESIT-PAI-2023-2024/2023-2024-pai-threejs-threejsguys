@@ -5,7 +5,7 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js'; // Importing GUI 
 
 function main() {
   // Selecting the canvas and DOM elements for views
-  const canvas = document.querySelector('#c');
+  const canvas = document.querySelector('#canvas');
   const view1Elem = document.querySelector('#view1');
   const view2Elem = document.querySelector('#view2');
 

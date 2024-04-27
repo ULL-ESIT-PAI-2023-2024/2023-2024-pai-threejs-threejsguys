@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 function main() {
   // Select the canvas and create the renderer
-  const canvas = document.querySelector('#c');
-  const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+  const canvas = document.querySelector('#canvas');
+  const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
 
   // Set up the camera
   const fov = 75;

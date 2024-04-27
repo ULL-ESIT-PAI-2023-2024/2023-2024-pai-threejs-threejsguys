@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 function main() {
   // Select the canvas and set up the renderer
-  const canvas = document.querySelector('#c');
-  const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+  const canvas = document.querySelector('#canvas');
+  const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
 
   // Set up the camera
   const fov = 75;
@@ -29,7 +29,7 @@ function main() {
   const loader = new THREE.TextureLoader();
   loader.load('./images/flower_example.jpg', (texture) => {
     texture.colorSpace = THREE.SRGBColorSpace;
-    const material = new THREE.MeshBasicMaterial({ map: texture });
+    const material = new THREE.MeshBasicMaterial({map: texture});
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
     cubes.push(cube); // add to cube list for rotation
