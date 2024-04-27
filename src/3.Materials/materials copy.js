@@ -17,12 +17,7 @@ import * as THREE from 'three';
  */
 function init() {
   const scene = new THREE.Scene();
-  
-  const fov = 75;
-  const aspect = window.innerWidth / window.innerHeight;
-  const near = 0.1;
-  const far = 1000;
-  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.z = 5;
 
   const renderer = new THREE.WebGLRenderer();
@@ -30,22 +25,41 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: 'green' });
+  const material = new THREE.MeshPhongMaterial({
+    color: 'red',    // rojo
+    shininess: 150
+    
+  });
   const cube = new THREE.Mesh(geometry, material);
   cube.rotation.set(1,2,3); 
+
   scene.add(cube);
 
-  function render() {
-    requestAnimationFrame(render);
-    renderer.render(scene, camera);
-  }
+  const pointLight = new THREE.PointLight('white', 150); 
+  pointLight.position.set(0, 0, 5); 
+  scene.add(pointLight);
 
+  function render(time) {
+    time *= 0.001;
+
+    // Rotate cubes
+    const speed = 0.2;
+    const rot = time * speed;
+    cube.rotation.x = rot;
+    cube.rotation.y = rot;
+
+    // Render the scene
+    renderer.render(scene, camera);
+
+    // Request the next animation frame
+    requestAnimationFrame(render);
+  }
+  // Start the animation
   render();
 }
 
 init();
 
-/** 
- * Forma de compilar: 
+/** Forma de Compilar 
  * npx webpack
  */

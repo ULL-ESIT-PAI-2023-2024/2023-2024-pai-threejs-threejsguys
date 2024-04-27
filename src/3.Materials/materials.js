@@ -18,31 +18,62 @@ import * as THREE from 'three';
 function init() {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
+  camera.position.z = 8;
 
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshPhongMaterial({
-    color: 'red',    // rojo
+  const material1 = new THREE.MeshPhongMaterial({
+    color: 'yellow',    
     shininess: 150
   });
-  const cube = new THREE.Mesh(geometry, material);
-  cube.rotation.set(1,2,3); 
+  const cube1 = new THREE.Mesh(geometry, material1);
+  cube1.position.set(-3, 0, 0);
+  scene.add(cube1);
 
-  scene.add(cube);
+  const geometry2 = new THREE.BoxGeometry(1, 1, 1);
 
-  const pointLight = new THREE.PointLight('white', 150); 
-  pointLight.position.set(0, 0, 5); 
-  scene.add(pointLight);
+  const material2 = new THREE.MeshStandardMaterial({
+    color: 'red',    
+    shininess: 0, 
+    roughness: 100
+  });
+  const cube2 = new THREE.Mesh(geometry2, material2);
+  cube2.position.set(3, 0, 0);
+  scene.add(cube2);
 
-  function render() {
-    requestAnimationFrame(render);
+  const spotLight = new THREE.SpotLight('white', 300); 
+  spotLight.position.set(-3, 2, 5); 
+  spotLight.target.position.set(3, -5, 0); 
+  scene.add(spotLight);
+  scene.add(spotLight.target);
+
+  const helper = new THREE.SpotLightHelper(spotLight); 
+  scene.add(helper);
+
+
+
+  function render(time) {
+    time *= 0.001;
+  
+    // Rotate cubes
+    const speed = 0.2;
+    const rot = time * speed;
+    cube1.rotation.x = rot;
+    cube1.rotation.y = rot;
+    cube2.rotation.x = rot;
+    cube2.rotation.y = rot;
+  
+    // Render the scene
     renderer.render(scene, camera);
+  
+    // Request the next animation frame
+    requestAnimationFrame(render);
   }
-
+  
+  // Start the animation
   render();
 }
 

@@ -18,7 +18,7 @@ import * as THREE from 'three';
 function init() {
   const scene = new THREE.Scene();
 
-  const fov = 45;
+  const fov = 60;
   const aspect = window.innerWidth / window.innerHeight;
   const near = 0.1;
   const far = 100;
