@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './materials.js', 
+  entry: './materials.ts', 
   output: {
     path: path.resolve(__dirname, './compiled'),
     filename: 'materials.js', 
