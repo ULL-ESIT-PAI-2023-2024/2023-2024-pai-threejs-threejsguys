@@ -27,7 +27,7 @@ function main() {
 
   // Load texture
   const loader = new THREE.TextureLoader();
-  const texture = loader.load('./images/flower_example.jpg');
+  const texture = loader.load('./images/dog_example.jpg');
   texture.colorSpace = THREE.SRGBColorSpace;
 
   // Create material and apply texture
