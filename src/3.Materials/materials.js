@@ -35,7 +35,7 @@ function init() {
 
   const geometry2 = new THREE.BoxGeometry(1, 1, 1);
 
-  const material2 = new THREE.MeshStandardMaterial({
+  const material2 = new THREE.MeshPhongMaterial({
     color: 'red',    
     shininess: 0, 
     roughness: 100
