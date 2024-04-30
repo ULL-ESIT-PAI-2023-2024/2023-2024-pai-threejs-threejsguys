@@ -9,3 +9,6 @@ To install the project:
 npm install
 npm install three
 npm install --save-dev @types/three
+
+
+To execute the examples use a VSC Live Server
